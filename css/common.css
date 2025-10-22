@@ -1,0 +1,1504 @@
+@charset "UTF-8";
+/*에스코어드림*/
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-3Light.woff2') format('woff2'),
+        url('../font/S-CoreDream-3Light.woff') format('woff');
+    font-weight:300;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-4Regular.woff2') format('woff2'),
+        url('../font/S-CoreDream-4Regular.woff') format('woff');
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-5Medium.woff2') format('woff2'),
+        url('../font/S-CoreDream-5Medium.woff') format('woff');
+    font-weight:500;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-6Bold.woff2') format('woff2'),
+        url('../font/S-CoreDream-6Bold.woff') format('woff');
+    font-weight:600;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-7ExtraBold.woff2') format('woff2'),
+        url('../font/S-CoreDream-7ExtraBold.woff') format('woff');
+    font-weight:700;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-8Heavy.woff2') format('woff2'),
+        url('../font/S-CoreDream-8Heavy.woff') format('woff');
+    font-weight:800;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family:'Escoredream';
+    src: url('../font/S-CoreDream-9Black.woff2') format('woff2'),
+        url('../font/S-CoreDream-9Black.woff') format('woff');
+    font-weight:900;
+    font-style:normal;
+    font-display:swap;
+}
+
+
+
+/*헤더영역*/
+#header {
+  position: fixed;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1) ;
+}
+
+.inner {
+  width: 1340px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+#header .logo img {
+  display: block;
+}
+
+#header .gnb {
+  display: flex;
+  text-align: center;
+}
+
+#header .gnb>li {
+  position: relative;
+  transition: all 0.2s;
+}
+
+@keyframes menu_hover {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+#header .gnb>li:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: #003975;
+  animation: menu_hover 0.2s linear;
+}
+
+#header .gnb>li:hover>a {
+  color: #003975;  
+}
+
+#header .gnb>li.on::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: #003975;
+}
+
+#header .gnb>li.on > a {
+  color: #003975;
+}
+
+#header .gnb>li>a {
+  display: block;
+  padding: 0 38px;
+  height: 90px;
+  line-height: 90px;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+#header .global a {
+  display: block;
+}
+
+#header .global a img {
+  width: 100%;
+}
+/*헤더 서브메뉴*/
+#header .sub_menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 330px;
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(222, 253, 255, 0.0);
+  }
+
+  100% {
+    background: rgba(222, 253, 255, 0.5);
+  }
+}
+
+#header .sub_menu.on {
+  display: block;
+  height: 330px;
+  background: rgba(222, 253, 255, 0.5);
+  animation: fadeIn 0.1s linear;
+}
+
+#header .sub_menu li:hover a {
+  color: #39B54A;
+}
+
+#header .sub_menu a {
+  display: block;
+  padding: 12px 0;
+  font-size: 1.6rem;
+}
+
+#header .header_bg {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 330px;
+  background: #fff;
+}
+
+#header .media_menu {
+  display: none;
+}
+
+/*면적계산기 팝업*/
+.calc_popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.calc_popup .calcpop_wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1270px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.calc_popup .calcpop_wrap .calc_head {
+  padding: 40px 35px;
+  background: #003975;
+  font-size: 4.5rem;
+  color: #fff;
+}
+
+.calc_popup .calcpop_wrap .calc_content {
+  padding: 0 20px;
+  height: 650px;
+  overflow-y: auto;
+}
+
+.calc_popup .calcpop_wrap table {
+  width: 1200px;
+  margin: 80px auto;
+}
+
+.calc_popup .calcpop_wrap table tbody {
+  border-top: 2px solid #003975;
+  border-bottom: 2px solid #003975;
+}
+
+.calc_popup .calcpop_wrap table caption {
+  margin-bottom: 50px;
+  font-size: 4.5rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.calc_popup .calcpop_wrap table th, .calc_popup .calcpop_wrap table td {
+  padding: 30px 20px;
+  font-size: 2.0rem;
+  font-weight: 300;
+}
+
+.calc_popup .calcpop_wrap table th {
+  width: 150px;
+  border: 1px solid #ddd;
+  border-left: none;
+}
+
+.calc_popup .calcpop_wrap table th span {
+  font-size: 2.0rem;
+}
+
+.calc_popup .calcpop_wrap table .tdm {
+  width: calc((100% - 300px) / 2);
+}
+
+.calc_popup .calcpop_wrap table .cen {
+  width: 150px;
+}
+
+.calc_popup .calcpop_wrap table tr:nth-child(1) {
+  border-bottom: 1px solid #ddd;
+}
+
+.calc_popup .calcpop_wrap table input {
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.calc_popup .calcpop_wrap table #btn01, .calc_popup .calcpop_wrap table #btn02 {
+  padding: 22px 30px;
+  border-radius: 10px;
+  background: #39B54A;
+  font-size: 2.0rem;
+  color: #fff;
+  text-align: center;
+}
+
+.calc_popup .calcpop_wrap .calc_content .close {
+  position: absolute;
+  right: 68px;
+  bottom: 48px;
+  padding: 30px 55px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f0f0f0;
+  font-size: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.calc_popup .calcpop_wrap span.mo_close {
+  display: none;
+}
+
+/*푸터영역*/
+#footer {
+  padding: 70px 0;
+  background: rgba(37,37,37,0.2);
+  color: #666;
+}
+
+#footer a {
+  color: #666;
+}
+
+#footer .footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+#footer img {
+  display: block;
+}
+
+#footer address {
+  margin-left: 80px;
+}
+
+#footer address .address_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+}
+
+#footer address span {
+  margin-right: 35px;
+  font-size: 1.5rem;
+}
+
+#footer address span:nth-child(4), #footer address span:nth-child(5), #footer address span:nth-child(6), #footer address span:nth-child(7) {
+  margin-right: 15px;
+}
+
+#footer address .copy {
+  margin-top: 35px;
+  font-size: 1.5rem;
+}
+
+#footer .fnb {
+  display: flex;
+  column-gap: 20px;
+  width: 500px;
+}
+
+#footer .fnb a {
+  display: block;
+  font-size: 1.5rem;
+}
+
+#footer .fot_sns {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  display: flex;
+  column-gap: 20px;
+}
+
+/*위로가기*/
+.btn_top{
+  display:none;
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  z-index:99;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background-color:#003975;
+  line-height:50px;      
+  text-align:center;
+  font-size:1.8rem;
+  text-transform:uppercase;
+}
+.btn_top a{
+  display: block;
+  color:#fff;
+}
+
+/*미디아 영역*/
+@media (max-width: 1340px) and (min-width: 1200px) {
+  .inner {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  /*면적계산기 팝업*/
+  .calc_popup .calcpop_wrap {
+    width: 90%;
+  }
+
+  .calc_popup .calcpop_wrap table {
+    width: 100%;
+    margin: 80px auto;
+  }
+
+  .calc_popup .calcpop_wrap table th {
+    width: 140px;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm {
+    width: calc((100% - 280px) / 2);
+  }
+
+  .calc_popup .calcpop_wrap table .cen {
+    width: 140px;
+  }  
+
+  /*푸터영역*/
+  #footer {
+    padding: 50px 0;
+  }
+  
+  #footer .footer {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  #footer address {
+    margin-left: 0;
+    margin-top: 35px;
+  }
+
+  #footer address .address_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    width: 804px;    
+  }
+
+  #footer address span {
+    margin-right: 35px;
+    font-size: 1.5rem;
+  }
+
+  #footer address span:nth-child(4), #footer address span:nth-child(5), #footer address span:nth-child(6), #footer address span:nth-child(7) {
+    margin-right: 15px;
+  }
+
+  #footer address .copy {
+    margin: 20px 0;
+    font-size: 1.5rem;
+  }
+
+  #footer .fnb {
+    display: flex;
+    column-gap: 22px;
+    width: 500px;
+  }
+
+  #footer .fnb a {
+    display: block;
+    font-size: 1.5rem;
+  }
+
+  #footer .fot_sns {
+    position: absolute;
+    right: 35px;
+    top: 0;
+    display: flex;
+    column-gap: 15px;
+  }
+
+  #footer .fot_sns a {
+    display: block;
+    width: 40px;
+  }
+
+  #footer .fot_sns a img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:1200px){
+  .inner {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  #header .gnb>li>a {
+    display: block;
+    padding: 0 15px;
+    font-size: 1.8rem;
+  }
+
+  /*면적계산기 팝업*/
+  .calc_popup .calcpop_wrap {
+    width: 90%;
+  }
+
+  .calc_popup .calcpop_wrap table {
+    width: 100%;
+    margin: 80px auto;
+  }
+
+  .calc_popup .calcpop_wrap table th {
+    width: 140px;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm {
+    width: calc((100% - 280px) / 2);
+  }
+
+  .calc_popup .calcpop_wrap table .cen {
+    width: 140px;
+  }
+
+  /*푸터영역*/
+  #footer {
+    padding: 50px 0;
+  }
+  
+  #footer .footer {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  #footer address {
+    margin-left: 0;
+    margin-top: 35px;
+  }
+
+  #footer address .address_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    width: 804px;    
+  }
+
+  #footer address span {
+    margin-right: 35px;
+    font-size: 1.5rem;
+  }
+
+  #footer address span:nth-child(4), #footer address span:nth-child(5), #footer address span:nth-child(6), #footer address span:nth-child(7) {
+    margin-right: 15px;
+  }
+
+  #footer address .copy {
+    margin: 20px 0;
+    font-size: 1.5rem;
+  }
+
+  #footer .fnb {
+    display: flex;
+    column-gap: 22px;
+    width: 500px;
+  }
+
+  #footer .fnb a {
+    display: block;
+    font-size: 1.5rem;
+  }
+
+  #footer .fot_sns {
+    position: absolute;
+    right: 35px;
+    top: 0;
+    display: flex;
+    column-gap: 15px;
+  }
+
+  #footer .fot_sns a {
+    display: block;
+    width: 40px;
+  }
+
+  #footer .fot_sns a img {
+    display: block;
+    width: 100%;
+  }
+  
+
+
+
+}
+
+
+
+/*반응형 테블릿 영역*/
+@media screen and (max-width:834px) {
+  /*헤더 영역*/
+  #header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) ;
+  }
+  .inner {
+    width: 100%;
+    padding: 0 35px;
+  }
+
+  #header .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 90px;
+  }
+
+  #header .logo {
+    width: 180px;
+  }
+
+  #header .logo img {
+    display: block;
+    width: 100%;
+  }
+
+  #header .gnb {
+    display: none;
+  }
+
+  #header .global img {
+    width: 100%;
+  }
+
+  /*반응형 메뉴 영역*/
+  #header .header_right {
+    display: flex;
+    align-items: center;
+    column-gap: 35px;
+  }
+
+  #header .media_menu {
+    display: block;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #header .media_menu .hamburger {
+    position: relative;
+    padding: 2px;
+  }
+  
+  #header .media_menu span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin-bottom: 7px;
+    border-radius: 50px;
+    background: #252525;
+    transition: all 0.2s linear;
+  }
+
+  #header .media_menu.on span:nth-of-type(1) {
+    position: relative;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: 999;
+  }
+
+  #header .media_menu.on span:nth-of-type(2) {
+    display: none;
+  }
+
+  #header .media_menu.on span:nth-of-type(3) {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    z-index: 999;
+  }
+
+  #header .media_menu .media_gnb {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    width: 70%;
+    height: 100%;
+    padding-top: 50px;
+    background: #fff;
+    transform: translateX(600px);
+    transition: all 0.5s linear;
+  }
+
+  #header .media_menu .media_gnb.on {
+    transform: translateX(0);
+  }
+
+  #header .media_menu .media_gnb>li:hover>a {
+    color: #003975;
+  }
+
+  #header .media_menu .media_gnb>li>a {
+    display: block;
+    padding: 22px 30px;
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+
+  #header .media_menu .media_submenu {
+    background: rgba(222, 253, 255, 0.5);
+  }
+
+  #header .media_menu .media_submenu li:hover a {
+    color: #39B54A;
+  }
+
+  #header .media_menu .media_submenu a  {
+    display: block;
+    padding: 15px 30px;
+    font-size: 1.8rem;
+  }
+
+  #header .media_submenu_bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+  }
+  
+
+  /*면적계산기 팝업*/
+  .calc_popup table,
+  .calc_popup thead,
+  .calc_popup tbody,
+  .calc_popup th,
+  .calc_popup td,
+  .calc_popup tr {
+    display: block;
+    width: 100%;
+  }
+
+  .calc_popup .calcpop_wrap {
+    width: 90%;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close {
+    position: relative;
+    display: block;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 66px;
+    display: block;
+    width: 50px;
+    height: 6px;
+    margin-right: 31px;
+    border-radius: 50px;
+    background: #fff;
+    transform: rotate(45deg);
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 66px;
+    display: block;
+    width: 50px;
+    height: 6px;
+    margin-right: 31px;
+    border-radius: 50px;
+    background: #fff;
+    transform: rotate(-45deg);
+  }
+
+  .calc_popup .calcpop_wrap .calc_head {
+    width: 100%;
+    padding: 40px 25px;
+    font-size: 3.5rem;
+  }
+
+  .calc_popup .calcpop_wrap .calc_content {
+    padding: 0 20px;
+    height: 550px;
+    overflow-y: auto;
+  }
+
+  .calc_popup .calcpop_wrap table {
+    display: block;
+    width: 100%;
+    margin: 35px auto;
+  }
+
+  .calc_popup .calcpop_wrap table tbody {
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .calc_popup .calcpop_wrap table caption {
+    display: block;
+    font-size: 3.5rem;
+  }
+
+  .calc_popup .calcpop_wrap table th {
+    display: block;
+    width: 100%;
+    border-top: 2px solid #003975;
+    background: rgba(0, 57, 117, 0.1);
+  }
+
+  .calc_popup .calcpop_wrap table th span {
+    font-size: 2.4rem;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm{
+    display: block;
+    width: 100%;
+    font-size: 2.2rem;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input {
+    width: calc(100% - 200px);
+    font-size: 2.2rem;
+  }
+
+  .calc_popup .calcpop_wrap table .cen {
+    display: block;
+    margin: -25px auto;
+  }
+
+  .calc_popup .calcpop_wrap .calc_content .close {
+    display: none;
+  }
+
+  /*푸터영역*/
+  #footer {
+    padding: 50px 0;
+  }
+
+  #footer a {
+    color: #666;
+  }
+
+  #footer .footer {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  #footer address {
+    margin-left: 0;
+    margin-top: 35px;
+  }
+
+  #footer address .address_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    width: 100%;
+  }
+
+  #footer address span {
+    margin-right: 15px;
+    font-size: 1.2rem;
+  }
+
+  #footer address span:nth-child(4), #footer address span:nth-child(5), #footer address span:nth-child(6), #footer address span:nth-child(7) {
+    margin-right: 15px;
+  }
+
+  #footer address .copy {
+    margin: 30px 0;
+    font-size: 1.2rem;
+  }
+
+  #footer .fnb {
+    display: flex;
+    column-gap: 22px;
+    width: 100%;
+  }
+
+  #footer .fnb a {
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  #footer .fot_sns {
+    position: absolute;
+    top: 0;
+    display: flex;
+    column-gap: 15px;
+  }
+
+  #footer .fot_sns a {
+    display: block;
+    width: 34px;
+  }
+
+}
+
+
+@media all and (max-width:768px) {
+  /*면적계산기 팝업*/
+  .calc_popup .calcpop_wrap span.mo_close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    width: 55px;
+    height: 6px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    width: 55px;
+    height: 6px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap .calc_head {
+    padding: 40px 35px;
+    background: #003975;
+    font-size: 3.5rem;
+    color: #fff;
+  }
+
+  .calc_popup .calcpop_wrap table caption {
+    margin-bottom: 50px;
+    font-size: 3.5rem;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input {
+    width: calc(100% - 150px);
+    font-size: 2.2rem;
+  }
+
+}
+
+@media all and (max-width:650px) {
+  /*면적계산기 팝업*/
+  .calc_popup .calcpop_wrap table .tdm input {
+    width: 125px;
+    font-size: 2.2rem;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 64px;
+    width: 42px;
+    height: 6px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    width: 29px;
+    height: 4px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    width: 29px;
+    height: 4px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap .calc_head {
+    padding: 22px 35px;
+    background: #003975;
+    font-size: 2.5rem;
+    color: #fff;
+  }
+
+  .calc_popup .calcpop_wrap .calc_content {
+    height: 360px;
+  }
+
+  .calc_popup .calcpop_wrap table {
+    margin: 21px auto;
+  }
+
+  .calc_popup .calcpop_wrap table caption {
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .calc_popup .calcpop_wrap table th {
+    line-height: 0;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm{
+    display: block;
+    width: 100%;
+    margin: -10px 0;
+    font-size: 1.8rem;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input {
+    font-size: 1.8rem;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input#p1 {
+    width: calc(100% - 30px);
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input#m1 {
+    width: calc(100% - 115px);
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input#p2 {
+    width: calc(100% - 30px);
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input#m2 {
+    width: calc(100% - 115px);
+  }
+
+  .calc_popup .calcpop_wrap table #btn01, .calc_popup .calcpop_wrap table #btn02 {
+    padding: 12px 30px;
+    border-radius: 5px;
+  }
+
+}
+
+
+@media all and (max-width:480px) {
+  /*헤더 영역*/
+  #header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 55px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) ;
+  }
+  .inner {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  #header .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+  }
+
+  #header .logo {
+    width: 120px;
+  }
+
+  #header .logo img {
+    display: block;
+    width: 100%;
+  }
+
+  #header .gnb {
+    display: none;
+  }
+
+  #header .global {
+    width: 26px;
+  }
+  /*반응형 메뉴 영역*/
+  #header .header_right {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  #header .header_right .global {
+    width: 22px;
+  }
+
+  #header .media_menu {
+    display: block;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  #header .media_menu span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin-bottom: 5px;
+    border-radius: 50px;
+    background: #252525;
+    transition: all 0.2s linear;
+  }
+    
+  #header .media_menu.on span:nth-of-type(1) {
+    position: relative;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: 999;
+  }
+
+  #header .media_menu span:nth-child(3) {
+    margin-bottom: 0;
+  }
+
+  /*면적계산기 팝업*/
+  .calc_popup .calcpop_wrap table .tdm input {
+    width: 125px;
+    font-size: 2.2rem;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 64px;
+    width: 42px;
+    height: 6px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::before {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 35px;
+    width: 25px;
+    height: 4px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap span.mo_close::after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    top: 35px;
+    width: 25px;
+    height: 4px;
+    margin-right: 31px;
+  }
+
+  .calc_popup .calcpop_wrap .calc_head {
+    padding: 22px 25px;
+    background: #003975;
+    font-size: 2.0rem;
+    color: #fff;
+  }
+
+  .calc_popup .calcpop_wrap .calc_content {
+    height: 360px;
+  }
+
+  .calc_popup .calcpop_wrap table {
+    margin: 21px auto;
+  }
+
+  .calc_popup .calcpop_wrap table caption {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  
+  .calc_popup .calcpop_wrap table th {
+    line-height: 0;
+  }
+
+  .calc_popup .calcpop_wrap table th span {
+    font-size: 1.8rem;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm{
+    display: block;
+    width: 100%;
+    margin: -13px 0;
+    font-size: 1.4rem;
+  }
+
+  .calc_popup .calcpop_wrap table .tdm input {
+    font-size: 1.4rem;
+  }
+
+  .calc_popup .calcpop_wrap table #btn01, .calc_popup .calcpop_wrap table #btn02 {
+    margin: -12px 0;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+  }
+  
+  /*푸터영역*/
+  #footer {
+    padding: 30px 0;
+    overflow: hidden;
+  }
+
+  #footer a {
+    color: #666;
+  }
+
+  #footer .footer {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  #footer img {
+    display: block;
+  }
+
+  #footer .fot_logo img {
+    width: 112px;
+  }
+
+  #footer address {
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+  #footer address .address_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  #footer address span {
+    margin-right: 15px;
+    font-size: 1.2rem;
+  }
+
+  #footer address .copy {
+    margin: 25px 0;
+    font-size: 1.2rem;
+  }
+
+  #footer .fnb {
+    display: flex;
+    column-gap: 22px;
+    width: 500px;
+  }
+
+  #footer .fnb a {
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  #footer .fot_sns {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    display: flex;
+    column-gap: 12px;
+  }
+
+  #footer .fot_sns a {
+    display: block;
+    width: 28px;
+  }
+
+  #footer .fot_sns a img {
+    display: block;
+    width: 100%;
+  }
+}
+
+
+/*반응형 모바일 영역02*/
+@media screen and (max-width:390px) {
+  /*헤더 영역*/
+  #header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    height: 55px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) ;
+  }
+  .inner {
+    max-width:100%;
+    padding: 0 20px;
+  }
+
+  #header .header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+  }
+
+  #header .logo {
+    width: 120px;
+  }
+
+  #header .logo img {
+    display: block;
+    width:100%;
+  }
+
+  #header .gnb {
+    display: none;
+  }
+
+  #header .global {
+    width: 20px;
+  }
+
+  #header .global img {
+    width: 100%;
+  }
+
+  /*반응형 메뉴 영역*/
+
+  #header .header_right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+  }
+  
+  #header .media_menu {
+    display: block;
+    margin-top: 9px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #header .logo img {
+    display: block;
+    width: 100%;
+  }
+
+  #header .gnb {
+    display: none;
+  }
+
+  #header .global {
+    width: 24px;
+  }
+
+  /*반응형 메뉴 영역*/
+  #header .media_menu {
+    display: block;
+    width: 24px;
+    height: 31px;
+    margin-top: 5px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #header .media_menu span {
+    display: block;
+    width: 22px;
+    height: 3spx;
+    margin-bottom: 5px;
+    border-radius: 50px;
+    background: #252525;
+    transition: all 0.2s linear;
+  }
+
+  #header .media_menu .media_gnb {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    width: 70%;
+    height: 100%;
+    padding-top: 35px;
+    background: #fff;
+    transform: translateX(600px);
+    transition: all 0.5s linear;
+  }
+
+  #header .media_menu .media_gnb.on {
+    transform: translateX(0);
+  }
+
+  #header .media_menu .media_gnb>li:hover>a {
+    color: #003975;
+  }
+
+  #header .media_menu .media_gnb>li>a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  #header .media_menu .media_submenu {
+    background: rgba(222, 253, 255, 0.5);
+  }
+
+  #header .media_menu .media_submenu li:hover a {
+    color: #39B54A;
+  }
+
+  #header .media_menu .media_submenu a  {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+  }
+
+  #header .media_menu .media_submenu_bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+  }
+  
+  /*푸터영역*/
+  #footer {
+    padding: 30px 0;
+    overflow: hidden;
+  }
+
+  #footer a {
+    color: #666;
+  }
+
+  #footer .footer {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  #footer .fot_logo img {
+    width: 112px;
+  }
+
+  #footer address {
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+  #footer address .address_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  #footer address span {
+    margin-right: 15px;
+    font-size: 1.2rem;
+  }
+
+  #footer address .copy {
+    margin: 15px 0;
+    font-size: 1.2rem;
+  }
+
+  #footer .fnb {
+    display: flex;
+    column-gap: 22px;
+    width: 100%;
+  }
+
+  #footer .fnb a {
+    font-size: 1.2rem;
+  }
+
+  #footer .fot_sns a {
+    display: block;
+    width: 28px;
+  }
+
+}
+
